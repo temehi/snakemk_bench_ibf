@@ -1,0 +1,53 @@
+{
+    "jobs": [
+        ["A_B_refseq_20170926", "SRR6504858", 40000000]
+    ],
+    "jobs_DISABLED": [
+        ["A_B_refseq_20170926", "ABSim", 100000],
+        ["A_B_refseq_20170926", "SRR6504858", 40000000],
+        ["A_B_refseq_20170926", "ABSim", 1000000],
+        ["A_B_refseq_sample", "ABSim100K", 10000],
+        ["A_B_refseq_20170926", "ABSim", 1000000]
+    ],
+    "ibf_sizes": ["16g"],
+    "num_bins": ["64", "256", "1024"],
+    "kmer_sizes": ["19", "20"],
+    "bin_methods": ["taxo"],
+    "num_threads": 1,
+    "references": {
+        "A_B_refseq_20170926_taxo_1024": [
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_20170926_taxo_1024.tar.gz",
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_20170926_taxo_1024_up.tar.gz"
+        ],
+        "A_B_refseq_20170926_taxo_256": [
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_20170926_taxo_256.tar.gz",
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_20170926_taxo_256_up.tar.gz"
+        ],
+        "A_B_refseq_20170926_taxo_64": [
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_20170926_taxo_64.tar.gz",
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_20170926_taxo_64_up.tar.gz"
+        ],
+        "A_B_refseq_sample_taxo_1024": [
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_sample_taxo_1024.tar.gz",
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_sample_taxo_1024_up.tar.gz"
+        ],
+        "A_B_refseq_sample_taxo_256": [
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_sample_taxo_256.tar.gz",
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_sample_taxo_256_up.tar.gz"
+        ],
+        "A_B_refseq_sample_taxo_64": [
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_sample_taxo_64.tar.gz",
+            "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/A_B_refseq_sample_taxo_64_up.tar.gz"
+        ]
+    },
+    "reads": {
+        "ABSim": "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/ABSim.fastq.gz",
+        "ABSim100K": "ftp://ftp.mi.fu-berlin.de/pub/dadi/dream_yara_data/ABSim100K.fastq.gz",
+        "ERR161544": "ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/ERR/ERR161/ERR161544/ERR161544.sra",
+        "ERR008613": "ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByRun/sra/ERR/ERR008/ERR008613/ERR008613.sra",
+        "SRR6504858": "ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR650/008/SRR6504858/SRR6504858_1.fastq.gz"
+    },
+    "ibf_params": "--filter-type bloom --num-hash 3 --version-check OFF --verbose",
+    "ibf_Update_params": "--version-check OFF --verbose",
+    "ibf_filter_params": "--stat-only --error-rate 3 -v --version-check OFF --verbose"
+}

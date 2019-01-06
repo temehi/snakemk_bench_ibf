@@ -1,0 +1,78 @@
+# vim: syntax=python tabstop=4 expandtab
+# coding: utf-8
+
+rule collect_ibf_build_logs:
+    input:
+        expand("data/{reference}_{bin_method}_{num_bin}_n{ibf_size}_k{kmer_size}.filter.log",
+            reference=get_references(),
+            bin_method=config["bin_methods"],
+            num_bin=config["num_bins"],
+            ibf_size=config["ibf_sizes"],
+            kmer_size=config["kmer_sizes"])
+    output:
+        "data/report_ibf_build.csv"
+    shell:
+        "echo 'ibf build data' > {output}; "
+        "for f in {input}; do "
+            "echo ${{f}}; tail ${{f}}| grep 'RES:'|awk -F':' '{{print $2}}'| awk '{{print $1\"\\t\"$2\"\\t\"$3}}'; "
+        "done >> {output}; "
+
+
+rule collect_ibf_update_logs:
+    input:
+        expand("data/{reference}_{bin_method}_{num_bin}_n{ibf_size}_k{kmer_size}.filter.up.log",
+            reference=get_references(),
+            bin_method=config["bin_methods"],
+            num_bin=config["num_bins"],
+            ibf_size=config["ibf_sizes"],
+            kmer_size=config["kmer_sizes"]),
+    output:
+        "data/report_ibf_update.csv"
+    shell:
+        "echo 'ibf update data'> {output}; "
+        "for f in {input}; do "
+            "echo ${{f}}; tail ${{f}}| grep 'RES:'|awk -F':' '{{print $2}}'| awk '{{print $1\"\\t\"$2\"\\t\"$3}}'; "
+        "done >> {output}; "
+
+rule collect_ibf_apply_logs:
+    input:
+        expand("data/{reference}_{bin_method}_{num_bin}_n{ibf_size}_k{kmer_size}_{reads}_{limit}.csv.log",
+            reference=get_references(),
+            bin_method=config["bin_methods"],
+            num_bin=config["num_bins"],
+            ibf_size=config["ibf_sizes"],
+            kmer_size=config["kmer_sizes"],
+            reads=get_reads(),
+            limit=get_limits())
+    output:
+        "data/report_ibf_apply.csv"
+    shell:
+        "echo 'ibf apply data' RES > {output} ;"
+        "for f in {input}; do "
+            "echo ${{f}}; tail ${{f}}| grep 'RES:'|awk -F':' '{{print $2}}'| awk '{{print $1\"\\t\"$2\"\\t\"$3}}'; "
+        "done >> {output}; "
+        "for d in 'Number of reads:' 'Avg reads per bin:' 'Filter loading time:' 'Filter reads time:'; do "
+            "echo 'ibf apply data' ${{d}}; "
+            "for f in {input}; do "
+                "echo ${{f}}; tail ${{f}}| grep \"${{d}}\"|awk -F':' '{{print $2}}'| awk '{{print $1}}'; "
+            "done ;"
+        "done >> {output}; "
+
+rule collect_all_values:
+    input:
+        ibf_build="data/report_ibf_build.csv",
+        ibf_update="data/report_ibf_update.csv",
+        ibf_apply="data/report_ibf_apply.csv"
+    output:
+        "data/report_ibf_all.csv"
+    params:
+        ref=lambda wildcards: config["jobs"][0][0] + "_",
+        read=lambda wildcards:  "_" + config["jobs"][0][1] + "_" + str(config["jobs"][0][2]) + ".csv"
+    shell:
+        "cat {input.ibf_build} {input.ibf_update} {input.ibf_apply} > temp.csv; cat temp.csv | " +
+        SED + " ':a;N;$!ba;s/.log\\n/\\t/g'|"+
+        SED + " -e 's/{params.ref}//g' |" +
+        SED + " -e 's/{params.read}//g' |" +
+        SED + " -e 's/data\///g' |" +
+        SED + " -e 's/.filter//g' |" +
+        SED + " -e 's/.up//g' > {output}; rm temp.csv;"

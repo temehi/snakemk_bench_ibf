@@ -1,0 +1,42 @@
+# vim: syntax=python tabstop=4 expandtab
+# coding: utf-8
+rule refs_download_bins:
+    wildcard_constraints:
+        meth="[taxoCKKTAXOckk]+",
+        num_bins="\d+",
+        reference="[a-zA-Z0-9\_]+"
+    input:
+        lambda wildcards: FTP.remote(config["references"][wildcards.reference + "_" + wildcards.meth + "_" + wildcards.num_bins][0],
+                                     insecure=True, keep_local=False)
+    output:
+        touch("data/{reference}_{meth}_{num_bins}/ref_{num_bins}")
+    params:
+        num_bins="{num_bins}",
+        in_dir="{reference}_{meth}_{num_bins}/",
+        out_dir="data/{reference}_{meth}_{num_bins}/"
+    shell:
+        "tar -zxvf {input}; "
+        "seq 0 $(({params.num_bins}-1)) | xargs -P 8 -I {{}} "
+        "sh -c \" cat {params.in_dir}{{}}.fasta | "+ SED + " -e '/^>/! s/\([^ACGTacgt]\)/N/g; s/ .*//g' > {params.out_dir}{{}}.fasta\"; "
+        "rm -rf {params.in_dir} ; "
+
+
+rule refs_update_download_bins:
+    wildcard_constraints:
+        meth="[taxoCKKTAXOckk]+",
+        num_bins="\d+",
+        reference="[a-zA-Z0-9\_]+"
+    input:
+        lambda wildcards: FTP.remote(config["references"][wildcards.reference + "_" + wildcards.meth + "_" + wildcards.num_bins][1],
+                                     insecure=True, keep_local=False)
+    output:
+        touch("data/{reference}_{meth}_{num_bins}_up/ref_up_{num_bins}")
+    params:
+        num_bins="{num_bins}",
+        in_dir="{reference}_{meth}_{num_bins}_up/",
+        out_dir="data/{reference}_{meth}_{num_bins}_up/"
+    shell:
+        "tar -zxvf {input}; "
+        "ls {params.in_dir} | xargs -P 8 -I {{}} "
+        "sh -c \" cat {params.in_dir}{{}} | "+ SED + " -e '/^>/! s/\([^ACGTacgt]\)/N/g; s/ .*//g' > {params.out_dir}{{}}; \"; "
+        "rm -rf {params.in_dir}; "

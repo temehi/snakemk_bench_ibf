@@ -1,0 +1,71 @@
+# vim: syntax=python tabstop=4 expandtab
+# coding: utf-8
+
+rule ibf_build:
+    input:
+        "data/{reference}_{meth}_{num_bins}/ref_{num_bins}"
+    output:
+        "data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter"
+    wildcard_constraints:
+        meth="[taxoCKKTAXOckk]+",
+        num_bins="\d+",
+        kmer_size="\d+",
+        ibf_size="\d+[gmGM]"
+    params:
+        num_threads=config["num_threads"],
+        num_bins="{num_bins}",
+        k="{kmer_size}",
+        bs="{ibf_size}",
+        idir="data/{reference}_{meth}_{num_bins}/",
+        misc=lambda wildcards: config["ibf_params"]
+    log:
+        "data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter.log"
+    shell:
+        TIME + platform.system() +
+        "/bin/dream_yara_build_filter  --threads {params.num_threads} --number-of-bins {params.num_bins} --kmer-size {params.k}  --bloom-size {params.bs} {params.misc} --output-file {output} {params.idir} 2> {log};"
+
+#
+rule ibf_update:
+    input:
+        old_filter="data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter",
+        symbolic="data/{reference}_{meth}_{num_bins}_up/ref_up_{num_bins}"
+    output:
+        touch("data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter.up")
+    wildcard_constraints:
+        meth="[taxoCKKTAXOckk]+",
+        num_bins="\d+",
+        kmer_size="\d+",
+        ibf_size="\d+[gmGM]"
+    params:
+        num_threads=config["num_threads"],
+        misc=config["ibf_Update_params"],
+        update_files="data/{reference}_{meth}_{num_bins}_up/*.fasta",
+        filter_derviative="data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}*.csv"
+    log:
+        "data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter.up.log",
+    shell:
+        TIME + platform.system() +
+        "/bin/dream_yara_update_filter --threads {params.num_threads} {params.misc} {input.old_filter} {params.update_files} 2> {log}; "
+
+
+rule ibf_classify_reads:
+    input:
+        ibf="data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter",
+        ibf_up="data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter.up",
+        read="data/{reads}_{limit}.fastq"
+    wildcard_constraints:
+        meth="[taxoCKKTAXOckk]+",
+        limit="\d+",
+        num_bins="\d+",
+        kmer_size="\d+",
+        ibf_size="\d+[gmGM]"
+    output:
+        touch("data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}_{reads}_{limit}.csv")
+    params:
+        num_threads=config["num_threads"],
+        misc=config["ibf_filter_params"]
+    log:
+        "data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}_{reads}_{limit}.csv.log"
+    shell:
+        TIME + platform.system() +
+        "/bin/dream_yara_apply_filter --threads {params.num_threads} {params.misc} --output-file {output} {input.ibf} {input.read} 2> {log};"
