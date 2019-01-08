@@ -9,7 +9,7 @@
         ["A_B_refseq_sample", "ABSim100K", 10000],
         ["A_B_refseq_20170926", "ABSim", 1000000]
     ],
-    "ibf_sizes": ["16g"],
+    "ibf_sizes": ["16g", "32g"],
     "num_bins": ["64", "256", "1024"],
     "kmer_sizes": ["19", "20"],
     "bin_methods": ["taxo"],
