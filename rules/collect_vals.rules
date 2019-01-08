@@ -36,14 +36,13 @@ rule collect_ibf_update_logs:
 
 rule collect_ibf_apply_logs:
     input:
-        expand("data/{reference}_{bin_method}_{num_bin}_n{ibf_size}_k{kmer_size}_{reads}_{limit}.csv.log",
+        expand("data/{reference}_{bin_method}_{num_bin}_n{ibf_size}_k{kmer_size}_{reads}.csv.log",
             reference=get_references(),
             bin_method=config["bin_methods"],
             num_bin=config["num_bins"],
             ibf_size=config["ibf_sizes"],
             kmer_size=config["kmer_sizes"],
-            reads=get_reads(),
-            limit=get_limits())
+            reads=get_reads())
     output:
         "data/report_ibf_apply.csv"
     shell:
@@ -67,7 +66,7 @@ rule collect_all_values:
         "data/report_ibf_all.csv"
     params:
         ref=lambda wildcards: config["jobs"][0][0] + "_",
-        read=lambda wildcards:  "_" + config["jobs"][0][1] + "_" + str(config["jobs"][0][2]) + ".csv"
+        read=lambda wildcards:  "_" + config["jobs"][0][1] + ".csv"
     shell:
         "cat {input.ibf_build} {input.ibf_update} {input.ibf_apply} > temp.csv; cat temp.csv | " +
         SED + " ':a;N;$!ba;s/.log\\n/\\t/g'|"+

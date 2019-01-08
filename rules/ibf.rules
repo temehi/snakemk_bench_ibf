@@ -52,20 +52,19 @@ rule ibf_classify_reads:
     input:
         ibf="data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter",
         ibf_up="data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}.filter.up",
-        read="data/{reads}_{limit}.fastq"
+        read="data/{reads}.fastq"
     wildcard_constraints:
         meth="[taxoCKKTAXOckk]+",
-        limit="\d+",
         num_bins="\d+",
         kmer_size="\d+",
         ibf_size="\d+[gmGM]"
     output:
-        touch("data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}_{reads}_{limit}.csv")
+        touch("data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}_{reads}.csv")
     params:
         num_threads=config["num_threads"],
         misc=config["ibf_filter_params"]
     log:
-        "data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}_{reads}_{limit}.csv.log"
+        "data/{reference}_{meth}_{num_bins}_n{ibf_size}_k{kmer_size}_{reads}.csv.log"
     shell:
         TIME + platform.system() +
         "/bin/dream_yara_apply_filter --threads {params.num_threads} {params.misc} --output-file {output} {input.ibf} {input.read} 2> {log};"

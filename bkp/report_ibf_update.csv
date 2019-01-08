@@ -1,0 +1,25 @@
+ibf update data
+data/A_B_refseq_20170926_taxo_64_n16g_k19.filter.up.log
+375.47	16872564	95%
+data/A_B_refseq_20170926_taxo_64_n16g_k20.filter.up.log
+377.34	16872556	94%
+data/A_B_refseq_20170926_taxo_64_n32g_k19.filter.up.log
+501.23	33649708	87%
+data/A_B_refseq_20170926_taxo_64_n32g_k20.filter.up.log
+500.76	33649780	87%
+data/A_B_refseq_20170926_taxo_256_n16g_k19.filter.up.log
+350.81	16874332	94%
+data/A_B_refseq_20170926_taxo_256_n16g_k20.filter.up.log
+361.16	16874292	92%
+data/A_B_refseq_20170926_taxo_256_n32g_k19.filter.up.log
+476.37	33651504	86%
+data/A_B_refseq_20170926_taxo_256_n32g_k20.filter.up.log
+475.43	33651552	86%
+data/A_B_refseq_20170926_taxo_1024_n16g_k19.filter.up.log
+262.99	16841936	92%
+data/A_B_refseq_20170926_taxo_1024_n16g_k20.filter.up.log
+261.19	16841936	92%
+data/A_B_refseq_20170926_taxo_1024_n32g_k19.filter.up.log
+374.30	33619508	84%
+data/A_B_refseq_20170926_taxo_1024_n32g_k20.filter.up.log
+374.79	33619144	84%

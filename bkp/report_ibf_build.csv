@@ -1,0 +1,25 @@
+ibf build data
+data/A_B_refseq_20170926_taxo_64_n16g_k19.filter.log
+4364.61	16993056	99%
+data/A_B_refseq_20170926_taxo_64_n16g_k20.filter.log
+4373.64	16993120	99%
+data/A_B_refseq_20170926_taxo_64_n32g_k19.filter.log
+4779.56	33770340	98%
+data/A_B_refseq_20170926_taxo_64_n32g_k20.filter.log
+4707.00	33770244	98%
+data/A_B_refseq_20170926_taxo_256_n16g_k19.filter.log
+4375.66	16982680	99%
+data/A_B_refseq_20170926_taxo_256_n16g_k20.filter.log
+4442.81	16982624	98%
+data/A_B_refseq_20170926_taxo_256_n32g_k19.filter.log
+4793.92	33759888	98%
+data/A_B_refseq_20170926_taxo_256_n32g_k20.filter.log
+4691.56	33759768	98%
+data/A_B_refseq_20170926_taxo_1024_n16g_k19.filter.log
+4359.68	16951256	99%
+data/A_B_refseq_20170926_taxo_1024_n16g_k20.filter.log
+4384.91	16951380	99%
+data/A_B_refseq_20170926_taxo_1024_n32g_k19.filter.log
+4683.51	33728500	98%
+data/A_B_refseq_20170926_taxo_1024_n32g_k20.filter.log
+4686.72	33728428	98%

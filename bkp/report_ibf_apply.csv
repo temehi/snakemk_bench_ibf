@@ -1,0 +1,125 @@
+ibf apply data RES
+data/A_B_refseq_20170926_taxo_64_n16g_k19_SRR6504858_40000000.csv.log
+2391.86	16829496	99%
+data/A_B_refseq_20170926_taxo_64_n16g_k20_SRR6504858_40000000.csv.log
+2400.97	16829512	99%
+data/A_B_refseq_20170926_taxo_64_n32g_k19_SRR6504858_40000000.csv.log
+2486.32	33606820	97%
+data/A_B_refseq_20170926_taxo_64_n32g_k20_SRR6504858_40000000.csv.log
+2441.17	33606760	98%
+data/A_B_refseq_20170926_taxo_256_n16g_k19_SRR6504858_40000000.csv.log
+3060.95	16831116	99%
+data/A_B_refseq_20170926_taxo_256_n16g_k20_SRR6504858_40000000.csv.log
+3014.84	16831104	99%
+data/A_B_refseq_20170926_taxo_256_n32g_k19_SRR6504858_40000000.csv.log
+2894.98	33608308	98%
+data/A_B_refseq_20170926_taxo_256_n32g_k20_SRR6504858_40000000.csv.log
+2963.19	33608424	98%
+data/A_B_refseq_20170926_taxo_1024_n16g_k19_SRR6504858_40000000.csv.log
+5731.16	16840640	99%
+data/A_B_refseq_20170926_taxo_1024_n16g_k20_SRR6504858_40000000.csv.log
+5417.98	16840712	99%
+data/A_B_refseq_20170926_taxo_1024_n32g_k19_SRR6504858_40000000.csv.log
+4541.91	33617864	99%
+data/A_B_refseq_20170926_taxo_1024_n32g_k20_SRR6504858_40000000.csv.log
+4467.59	33617816	99%
+ibf apply data Number of reads:
+data/A_B_refseq_20170926_taxo_64_n16g_k19_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_64_n16g_k20_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_64_n32g_k19_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_64_n32g_k20_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_256_n16g_k19_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_256_n16g_k20_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_256_n32g_k19_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_256_n32g_k20_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_1024_n16g_k19_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_1024_n16g_k20_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_1024_n32g_k19_SRR6504858_40000000.csv.log
+4e+07
+data/A_B_refseq_20170926_taxo_1024_n32g_k20_SRR6504858_40000000.csv.log
+4e+07
+ibf apply data Avg reads per bin:
+data/A_B_refseq_20170926_taxo_64_n16g_k19_SRR6504858_40000000.csv.log
+293742
+data/A_B_refseq_20170926_taxo_64_n16g_k20_SRR6504858_40000000.csv.log
+297430
+data/A_B_refseq_20170926_taxo_64_n32g_k19_SRR6504858_40000000.csv.log
+286261
+data/A_B_refseq_20170926_taxo_64_n32g_k20_SRR6504858_40000000.csv.log
+289078
+data/A_B_refseq_20170926_taxo_256_n16g_k19_SRR6504858_40000000.csv.log
+99103
+data/A_B_refseq_20170926_taxo_256_n16g_k20_SRR6504858_40000000.csv.log
+101524
+data/A_B_refseq_20170926_taxo_256_n32g_k19_SRR6504858_40000000.csv.log
+96337.1
+data/A_B_refseq_20170926_taxo_256_n32g_k20_SRR6504858_40000000.csv.log
+98175.8
+data/A_B_refseq_20170926_taxo_1024_n16g_k19_SRR6504858_40000000.csv.log
+47832.6
+data/A_B_refseq_20170926_taxo_1024_n16g_k20_SRR6504858_40000000.csv.log
+49888.1
+data/A_B_refseq_20170926_taxo_1024_n32g_k19_SRR6504858_40000000.csv.log
+45525.9
+data/A_B_refseq_20170926_taxo_1024_n32g_k20_SRR6504858_40000000.csv.log
+46901
+ibf apply data Filter loading time:
+data/A_B_refseq_20170926_taxo_64_n16g_k19_SRR6504858_40000000.csv.log
+16.6591
+data/A_B_refseq_20170926_taxo_64_n16g_k20_SRR6504858_40000000.csv.log
+17.0734
+data/A_B_refseq_20170926_taxo_64_n32g_k19_SRR6504858_40000000.csv.log
+76.6485
+data/A_B_refseq_20170926_taxo_64_n32g_k20_SRR6504858_40000000.csv.log
+65.1306
+data/A_B_refseq_20170926_taxo_256_n16g_k19_SRR6504858_40000000.csv.log
+33.1014
+data/A_B_refseq_20170926_taxo_256_n16g_k20_SRR6504858_40000000.csv.log
+16.7593
+data/A_B_refseq_20170926_taxo_256_n32g_k19_SRR6504858_40000000.csv.log
+65.0702
+data/A_B_refseq_20170926_taxo_256_n32g_k20_SRR6504858_40000000.csv.log
+65.1335
+data/A_B_refseq_20170926_taxo_1024_n16g_k19_SRR6504858_40000000.csv.log
+16.6127
+data/A_B_refseq_20170926_taxo_1024_n16g_k20_SRR6504858_40000000.csv.log
+16.7807
+data/A_B_refseq_20170926_taxo_1024_n32g_k19_SRR6504858_40000000.csv.log
+65.1233
+data/A_B_refseq_20170926_taxo_1024_n32g_k20_SRR6504858_40000000.csv.log
+65.1138
+ibf apply data Filter reads time:
+data/A_B_refseq_20170926_taxo_64_n16g_k19_SRR6504858_40000000.csv.log
+2308.32
+data/A_B_refseq_20170926_taxo_64_n16g_k20_SRR6504858_40000000.csv.log
+2317.08
+data/A_B_refseq_20170926_taxo_64_n32g_k19_SRR6504858_40000000.csv.log
+2317.09
+data/A_B_refseq_20170926_taxo_64_n32g_k20_SRR6504858_40000000.csv.log
+2282.65
+data/A_B_refseq_20170926_taxo_256_n16g_k19_SRR6504858_40000000.csv.log
+2959.09
+data/A_B_refseq_20170926_taxo_256_n16g_k20_SRR6504858_40000000.csv.log
+2929.81
+data/A_B_refseq_20170926_taxo_256_n32g_k19_SRR6504858_40000000.csv.log
+2735.5
+data/A_B_refseq_20170926_taxo_256_n32g_k20_SRR6504858_40000000.csv.log
+2802.72
+data/A_B_refseq_20170926_taxo_1024_n16g_k19_SRR6504858_40000000.csv.log
+5627.74
+data/A_B_refseq_20170926_taxo_1024_n16g_k20_SRR6504858_40000000.csv.log
+5315.33
+data/A_B_refseq_20170926_taxo_1024_n32g_k19_SRR6504858_40000000.csv.log
+4364.04
+data/A_B_refseq_20170926_taxo_1024_n32g_k20_SRR6504858_40000000.csv.log
+4290.71

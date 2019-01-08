@@ -90,40 +90,14 @@ rule update_index:
 
 rule classify_reads:
     input:
-        expand("data/{reference}_{bin_method}_{num_bin}_n{ibf_size}_k{kmer_size}_{reads}_{limit}.csv",
+        expand("data/{reference}_{bin_method}_{num_bin}_n{ibf_size}_k{kmer_size}_{reads}.csv",
             reference=get_references(),
             bin_method=config["bin_methods"],
             num_bin=config["num_bins"],
             ibf_size=config["ibf_sizes"],
             kmer_size=config["kmer_sizes"],
-            reads=get_reads(),
-            limit=get_limits())
+            reads=get_reads())
 
 rule create_csv:
     input:"data/report_ibf_all.csv"
 
-
-# rule evaluate:q
-#     input:
-#         std=expand_jobs("data/{reads}_{limit}.{reference}.{mapper}.{errors}.{category}.rabema_report_tsv",
-#                     mapper=config["mappers"].keys(),
-#                     bin_methods=config["bin_methods"],
-#                     num_bins=config["num_bins"][0],
-#                     errors="5",
-#                     category="all-best"),
-#         dis=expand_jobs("data/{reads}_{limit}.{reference}.{mapper}_{bin_methods}_{num_bins}.{errors}.{category}.rabema_report_tsv",
-#                     mapper=config["dmappers"].keys(),
-#                     bin_methods=config["bin_methods"],
-#                     num_bins=config["num_bins"][0],
-#                     errors="5",
-#                     category="all-best")
-
-# rule report:
-#     input:
-#         mapper=expand_jobs("data/{reads}_{limit}.{reference}.{errors}.{category}.pdf",
-#                     errors="5",
-#                     category="all-best")
-
-# rule report_index:
-#     input:
-#         indexer=expand_jobs("data/{reference}.pdf")
